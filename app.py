@@ -14,10 +14,9 @@ def index():
 def generate_barcode():
     code = request.form['code']
     barcode_type = request.form['barcode_type']
-    color = request.form.get('color', 'black')  # Optional: Allow users to choose a color
+    color = request.form.get('color', 'black')  
 
     if barcode_type == "qrcode":
-        # Generate QR code
         qr = qrcode.QRCode(
             version=1,
             error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -32,11 +31,8 @@ def generate_barcode():
         buffer.seek(0)
         return send_file(buffer, mimetype='image/png', as_attachment=True, download_name='qrcode.png')
     else:
-        # Generate barcode
         barcode_format = barcode.get_barcode_class(barcode_type)
         generated_barcode = barcode_format(code, writer=ImageWriter())
-        
-        # Set color and save barcode to buffer
         options = {'foreground': color}
         buffer = BytesIO()
         generated_barcode.write(buffer, options=options)
