@@ -2,6 +2,8 @@
 
 This project is a web-based application that allows users to generate barcodes and QR codes. The application is built using Flask (Python) for the backend, and HTML/CSS for the frontend. Users can input text and select a barcode type to generate and download the corresponding barcode or QR code image.
 
+<img src="brgen.png" alt="Screenshot of the Barcode Generator" width="1200">
+
 ## Features
 
 - **Generate Barcodes**: Supports different types of barcodes including QR Code, Code 128, EAN-13, and UPC-A.
